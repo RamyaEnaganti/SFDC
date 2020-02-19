@@ -1,5 +1,8 @@
 package testCaseAssignment;
 
+import java.util.List;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -18,9 +21,15 @@ public class SfTestCase extends ReusableMethods {
 		//TC_4B_LoginToSalesForce();
 		//TC_5_LoginToSalesForce();
 		//TC_6_LoginToSalesForce();
-		TC_7_LoginToSalesForce();
+		//TC_7_LoginToSalesForce();
 		//TC_8_LoginToSalesForce();
 		//TC_9_LoginToSalesForce();
+		//TC_10_LoginToSalesForce();
+		//TC_11_LoginToSalesForce();
+		//TC_12_LoginToSalesForce();
+		//TC_13_LoginToSalesForce();
+		TC_14_LoginToSalesForce();
+		
 		CloseBrowser();
 		CloseReport();
 		
@@ -308,10 +317,221 @@ public class SfTestCase extends ReusableMethods {
 		LogOut.click();
 		Thread.sleep(3000);
 	}
+	public static void TC_10_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("10TC_10_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();		
+		WebElement Acnts=driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]/a"));
+		Acnts.click();	
+		Thread.sleep(3000);
+		WebElement NewAcntBtn=driver.findElement(By.xpath("//input[@name='new']"));
+		NewAcntBtn.click();
+		Thread.sleep(3000);
+		WebElement AcntName=driver.findElement(By.id("acc2"));
+		AcntName.sendKeys("Test123");
+		Select Type = new Select(driver.findElement(By.id("acc6")));		
+		Type.selectByVisibleText("Technology Partner");
+		Thread.sleep(2000);
+		Select CstmrPriority = new Select(driver.findElement(By.id("00N6g00000MmdLI")));		
+		CstmrPriority.selectByVisibleText("High");
+		WebElement SaveBtn=driver.findElement(By.name("save"));
+		SaveBtn.click();
+		Thread.sleep(3000);		
+	}
 	
 	
+	public static void TC_11_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("11TC_11_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();		
+		WebElement Acnts=driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]/a"));
+		Acnts.click();	
+		Thread.sleep(3000);
+		WebElement CreateNewView=driver.findElement(By.xpath("//a[contains(text(),'Create New View')]"));
+		CreateNewView.click();
+		Thread.sleep(3000);
+		WebElement ViewName=driver.findElement(By.xpath("//input[@id='fname']"));
+		ViewName.sendKeys("Testing1");
+		WebElement VwUniqueName=driver.findElement(By.xpath("//input[@id='devname']"));
+		VwUniqueName.sendKeys("T123");
+		Thread.sleep(3000);
+		WebElement SaveBtn=driver.findElement(By.xpath("//div[@class='pbBottomButtons']//input[@name='save']"));
+		SaveBtn.click();
+		Thread.sleep(3000);			
+	}
 	
-	
-	
+	public static void TC_12_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("12TC_12_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();		
+		WebElement Acnts=driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]/a"));
+		Acnts.click();	
+		Thread.sleep(1000);
+		Select  ViewDropdwn = new Select(driver.findElement(By.id("fcf")));		
+		ViewDropdwn.selectByVisibleText("Testing1");		
+		Thread.sleep(2000);
+		WebElement EditBtn=driver.findElement(By.xpath("//*[@id=\"filter_element\"]/div/span/span[2]/a[1]"));
+		EditBtn.click();
+		Thread.sleep(2000);
+		WebElement ViewName=driver.findElement(By.xpath("//input[@id='fname']"));
+		ViewName.clear();
+		ViewName.sendKeys("NewTesting1");
+		Select  FiltersDrpDown = new Select(driver.findElement(By.id("fcol1")));		
+		FiltersDrpDown.selectByVisibleText("Account Name");
+		Thread.sleep(2000);
+		Select Operator = new Select(driver.findElement(By.id("fop1")));		
+		Operator.selectByVisibleText("contains");		
+		WebElement Value = driver.findElement(By.xpath("//input[@id='fval1']"));
+		Value.sendKeys("a");		
+		WebElement Save = driver.findElement(By.name("save"));
+		Save.click();	
+		Thread.sleep(2000);		
+	}
+	public static void TC_13_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("13TC_13_LoginToSalesForce");
+		TC_10_LoginToSalesForce();
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Acnts=driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]/a"));
+		Acnts.click();	
+		Thread.sleep(3000);
+		WebElement MergeAcnt=driver.findElement(By.xpath("//*[@id=\"toolsContent\"]/tbody/tr/td[2]/div/div/div/ul/li[4]/span/a"));
+		MergeAcnt.click();
+		Thread.sleep(2000);
+		WebElement SearchAcnt = driver.findElement(By.xpath("//input[@id='srch']"));
+		SearchAcnt.sendKeys("Test123");
+		Thread.sleep(1000);
+		WebElement FindBtn = driver.findElement(By.xpath("//input[@name='srchbutton']"));
+		FindBtn.click();
+		Thread.sleep(1000);
+		WebElement NextBtn = driver.findElement(By.xpath("//*[@id=\"stageForm\"]/div/div[2]/div[5]/div/input[1]"));
+		NextBtn.click();
+		Thread.sleep(1000);
+		WebElement MergeBtn = driver.findElement(By.xpath("//div[contains(@class,'pbTopButtons')]//input[contains(@name,'save')]"));
+		MergeBtn.click();
+		Thread.sleep(1000);
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		Thread.sleep(5000);		
+	}
+	public static void TC_14_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("14TC_14_LoginToSalesForce");		
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		String actualTitle = driver.getTitle();
+		driver.manage().window().maximize();
+		String expectedTitle = "Home Page ~ Salesforce - Developer Edition";
+		if(actualTitle.equalsIgnoreCase(expectedTitle)) {
+			System.out.println("User is on home page");
+		}
+		else {
+			System.out.println("home page is not Lunched");
+		}
+		//Opening Accounts page
+		WebElement Accounts_Tab = driver.findElement(By.xpath("//*[@id=\"Account_Tab\"]/a"));
+		Accounts_Tab.click();
+		System.out.println("Clicked on Accounts Ta..");
+		Thread.sleep(3000);
+		Select  ViewDropdwn = new Select(driver.findElement(By.id("fcf")));		
+		ViewDropdwn.selectByVisibleText("Testing1");   
+		
+		WebElement EditLink = driver.findElement(By.linkText("Edit"));
+		EditLink.click();
+		WebElement s3 =driver.findElement(By.id("fname"));
+		s3.clear();
+		EnterText(s3, "viewname", "ViewName");
+		System.out.println("Viewname entered in the field");
+   
+		WebElement firstcolumn = driver.findElement(By.xpath("//select[@id='fcol1']"));
+		Click(firstcolumn, "firstcolumn");
+   
+		WebElement fields = driver.findElement(By.xpath("//select[@id='fcol1']"));
+		Select accfield = new Select(driver.findElement(By.xpath("//select[@id='fcol1']")));
+		accfield.selectByIndex(1);
+   
+		WebElement AddfieldsOperator = driver.findElement(By.xpath("//select[@id='fcol1']"));
+		Select operator = new Select(driver.findElement(By.xpath("//select[@id='fop1']")));
+		operator.selectByIndex(3);
+   
+		WebElement value = driver.findElement(By.id("fval1"));
+		value.clear();
+		value.sendKeys("<a>");
+		/*These statements verifies if the "Last Activity" is availble in the Available Fields
+		 * If Last Activity is available under Available Fields, It add the same to Selected Fields
+		 * and save the modifications
+		 */
+		WebElement Available_Fields_dropdown = driver.findElement(By.xpath("//*[@id='colselector_select_0']"));
+		Select Available_Fields_dropdown_list = new Select(Available_Fields_dropdown);
+		List<WebElement> Available_Fields_dropdown_options = Available_Fields_dropdown_list.getOptions();
 
+		boolean Element_available = false; //using as a reference to validate if the last activity is in available fields dropdown or not
+  
+		for(int i=0; i<Available_Fields_dropdown_options.size(); i++) {
+			if(Available_Fields_dropdown_options.get(i).getText().equals("Last Activity")) {
+				Element_available = true;
+				WebElement Add_arrow = driver.findElement(By.xpath("//img[@class='rightArrowIcon']"));
+				Add_arrow.click();
+				break;
+			}
+		}
+
+		/*These statements verifies if the "Last Activity" is availble in the Selected Fields
+		 * If Last Activity is available under Selected Fields, save the modifications
+		 *    */
+		if(Element_available = false) {
+			WebElement Selected_Fields_dropdown = driver.findElement(By.xpath("//select[@id='colselector_select_1']"));
+			Select Selected_Fields_dropdown_list = new Select(Available_Fields_dropdown);
+			List<WebElement> Selected_Fields_dropdown_options = Available_Fields_dropdown_list.getOptions();
+
+			for(int i=0; i<Available_Fields_dropdown_options.size(); i++) {
+				if(Selected_Fields_dropdown_options.get(i).getText().equals("Last Activity")) {
+					break;
+				}
+			} 
+		}
+  
+		//Clicking on save button
+		WebElement Save_button = driver.findElement(By.name("save"));
+		Save_button.click();
+		driver.close();
+		System.out.println("TC12Accounts_Edit_view is completed");
+   
+	}
+	
+	
 }
