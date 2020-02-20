@@ -1,7 +1,10 @@
 package testCaseAssignment;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -28,7 +31,14 @@ public class SfTestCase extends ReusableMethods {
 		//TC_11_LoginToSalesForce();
 		//TC_12_LoginToSalesForce();
 		//TC_13_LoginToSalesForce();
-		TC_14_LoginToSalesForce();
+		//TC_14_LoginToSalesForce();
+		//TC_15_LoginToSalesForce();
+		//TC_16_LoginToSalesForce();
+		//TC_17_LoginToSalesForce();
+		//TC_18_LoginToSalesForce();
+		//TC_19_LoginToSalesForce();
+		//TC_20_LoginToSalesForce();
+		TC_21_LoginToSalesForce();
 		
 		CloseBrowser();
 		CloseReport();
@@ -531,6 +541,201 @@ public class SfTestCase extends ReusableMethods {
 		driver.close();
 		System.out.println("TC12Accounts_Edit_view is completed");
    
+	}
+	
+	public static void TC_15_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("15TC_15_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();		
+		WebElement Opportunities=driver.findElement(By.xpath("//*[@id=\"Opportunity_Tab\"]/a"));
+		Opportunities.click();	
+		Thread.sleep(4000);
+		Select OppDropdwn = new Select(driver.findElement(By.xpath("//select[@id='fcf']")));	
+		
+		List<WebElement> options = OppDropdwn.getOptions(); 
+		Set<String> availableOptions = new HashSet<String>();
+		for (WebElement option : options) {
+			availableOptions.add(option.getText());
+		}
+		Set<String> requiredOptions = new HashSet<>();
+		requiredOptions.add("All Opportunities");
+		requiredOptions.add("Closing Next Month");
+		requiredOptions.add("Closing This Month");
+		requiredOptions.add("New This Week");
+		requiredOptions.add("Recently Viewed Opportunities");
+		requiredOptions.add("Won");
+		
+		for (String required : requiredOptions) {
+			if (!availableOptions.contains(required)) {
+				//the test should fail
+				Assert.fail();
+			}
+		}
+		System.out.println("Executed");
+		Thread.sleep(3000);
+	
+	}
+	
+	public static void TC_16_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("16TC_16_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();		
+		WebElement Opportunities=driver.findElement(By.xpath("//*[@id=\"Opportunity_Tab\"]/a"));		
+		Opportunities.click();	
+		Thread.sleep(2000);
+		WebElement NewBtn=driver.findElement(By.xpath("//input[@name='new']"));		
+		NewBtn.click();
+		Thread.sleep(1000);
+		WebElement OppName = driver.findElement(By.id("opp3"));
+		OppName.sendKeys("opp123");
+		Thread.sleep(1000);
+		WebElement AcntName = driver.findElement(By.id("opp4"));
+		AcntName.sendKeys("Test123");
+		Thread.sleep(1000);
+		WebElement CloseDate = driver.findElement(By.id("opp9"));
+		CloseDate.sendKeys("02/19/2020");
+		Select Stage = new Select(driver.findElement(By.id("opp11")));
+		Stage.selectByIndex(3);
+		WebElement Probability = driver.findElement(By.id("opp12"));
+		Probability.clear();
+		Probability.sendKeys("50");
+		WebElement PrimaryCampaign = driver.findElement(By.id("opp17"));
+		PrimaryCampaign.sendKeys("DM Campaign to Top Customers ");
+		WebElement SaveBtn = driver.findElement(By.name("save"));
+		SaveBtn.click();
+		Thread.sleep(2000);	
+		
+	}
+	public static void TC_17_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("17TC_17_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Opportunities=driver.findElement(By.xpath("//*[@id=\"Opportunity_Tab\"]/a"));		
+		Opportunities.click();	
+		Thread.sleep(2000);
+		WebElement PipelineLink=driver.findElement(By.xpath("//a[contains(text(),'Opportunity Pipeline')]"));
+		PipelineLink.click();
+		Thread.sleep(2000);		
+	}
+	
+	public static void TC_18_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("18TC_18_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Opportunities=driver.findElement(By.xpath("//*[@id=\"Opportunity_Tab\"]/a"));		
+		Opportunities.click();	
+		Thread.sleep(2000);
+		WebElement StuckOpportunities=driver.findElement(By.xpath("//a[contains(text(),'Stuck Opportunities')]"));
+		StuckOpportunities.click();
+		Thread.sleep(2000);		
+	}
+	
+	public static void TC_19_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("19TC_19_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Opportunities=driver.findElement(By.xpath("//*[@id=\"Opportunity_Tab\"]/a"));		
+		Opportunities.click();	
+		Thread.sleep(2000);
+		Select Interval = new Select(driver.findElement(By.id("quarter_q")));
+		Interval.selectByIndex(3);
+		Select Include = new Select(driver.findElement(By.id("open")));
+		Include.selectByIndex(3);
+		WebElement RunReport=driver.findElement(By.name("go"));
+		RunReport.click();
+		Thread.sleep(2000);		
+	}
+	
+	public static void TC_20_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("20TC_20_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Leads=driver.findElement(By.xpath("//a[contains(text(),'Leads')]"));		
+		Leads.click();
+		Thread.sleep(2000);
+		
+	}
+	
+	public static void TC_21_LoginToSalesForce() throws InterruptedException {
+		logger = report.startTest("21TC_21_LoginToSalesForce");
+		
+		OpenUrl("https://login.salesforce.com/");
+		logger.log(LogStatus.INFO,"URL Opened Succefully");
+		WebElement Uname = driver.findElement(By.xpath("//*[@id=\"username\"]"));
+		Uname.sendKeys("ramya@enaganti.com");
+		WebElement Pwd = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+		Pwd.sendKeys("Practice123");
+		WebElement loginBtn=driver.findElement(By.xpath("//*[@id=\"Login\"]"));
+		loginBtn.click();
+		WebElement Leads=driver.findElement(By.xpath("//a[contains(text(),'Leads')]"));		
+		Leads.click();
+		Thread.sleep(3000);
+		Select LeadsView = new Select(driver.findElement(By.id("fcf")));
+		List<WebElement> AllOpenLeads = LeadsView.getOptions(); 
+		Set<String> availableLeads = new HashSet<String>();
+		for (WebElement Lead : AllOpenLeads) {
+			availableLeads.add(Lead.getText());
+		}
+		Set<String> requiredLeads = new HashSet<>();
+		requiredLeads.add("All Open Leads");
+		requiredLeads.add("My Unread Leads");
+		requiredLeads.add("Recently Viewed Leads");
+		requiredLeads.add("Today's Leads");
+		requiredLeads.add("View - Custom 1");
+		requiredLeads.add("View - Custom 2");
+		
+		for (String required : requiredLeads) {
+			if (!availableLeads.contains(required)) {
+				//the test should fail
+				Assert.fail();
+			}
+		}
+		System.out.println("Executed");
+		Thread.sleep(2000);
+		
+		
 	}
 	
 	
